@@ -1,10 +1,13 @@
 package com.rossacheson.accounts.service.impl;
 
 import com.rossacheson.accounts.constants.AccountsConstants;
+import com.rossacheson.accounts.dto.AccountDto;
 import com.rossacheson.accounts.dto.CustomerDto;
 import com.rossacheson.accounts.entity.Account;
 import com.rossacheson.accounts.entity.Customer;
 import com.rossacheson.accounts.exception.CustomerAlreadyExistsException;
+import com.rossacheson.accounts.exception.ResourceNotFoundException;
+import com.rossacheson.accounts.mapper.AccountMapper;
 import com.rossacheson.accounts.mapper.CustomerMapper;
 import com.rossacheson.accounts.repository.AccountRepository;
 import com.rossacheson.accounts.repository.CustomerRepository;
@@ -41,6 +44,25 @@ public class AccountsServiceImpl implements IAccountsService {
         Customer savedCustom = customerRepository.save(customer);
         Account account = createNewAccount(savedCustom);
         accountRepository.save(account);
+    }
+
+    /**
+     * Retrieves the account details for the given mobile number.
+     *
+     * @param mobileNumber the mobile phone number associated with the account
+     * @return the account details
+     */
+    @Override
+    public CustomerDto fetchAccount(String mobileNumber) {
+        Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
+                () ->  new ResourceNotFoundException("Customer", "mobileNumber", mobileNumber));
+        Account account  = accountRepository.findByCustomerId(customer.getCustomerId()).orElseThrow(
+                () -> new ResourceNotFoundException("Account", "customerId", customer.getCustomerId())
+        );
+        CustomerDto customerDto = CustomerMapper.mapToCustomerDto(customer, new CustomerDto());
+        customerDto.setAccountDto(AccountMapper.mapToAccountDto(account, new AccountDto()));
+
+        return customerDto;
     }
 
     /**

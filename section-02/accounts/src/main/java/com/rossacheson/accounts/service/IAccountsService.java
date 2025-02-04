@@ -9,4 +9,11 @@ public interface IAccountsService {
      * @param customerDto the data transfer object containing customer details such as name, email, and mobile number
      */
     void createAccount(CustomerDto customerDto);
+    /**
+     * Retrieves the account details for the given mobile number.
+     *
+     * @param mobileNumber the mobile phone number associated with the account
+     * @return the account details
+     */
+    CustomerDto fetchAccount(String mobileNumber);
 }
