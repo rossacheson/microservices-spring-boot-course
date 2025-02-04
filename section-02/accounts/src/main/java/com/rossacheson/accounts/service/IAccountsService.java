@@ -24,4 +24,12 @@ public interface IAccountsService {
      * @return true if account was updated successfully, false otherwise
      */
     boolean updateAccount(CustomerDto customerDto);
+
+    /**
+     * Deletes the account associated with the given mobile number.
+     *
+     * @param mobileNumber the mobile phone number associated with the account
+     * @return true if account was deleted successfully, false otherwise
+     */
+    boolean deleteAccount(String mobileNumber);
 }
