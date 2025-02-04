@@ -16,4 +16,12 @@ public interface IAccountsService {
      * @return the account details
      */
     CustomerDto fetchAccount(String mobileNumber);
+
+    /**
+     * Updates the account details for the given customer.
+     *
+     * @param customerDto the data transfer object containing customer details such as name, email, and mobile number
+     * @return true if account was updated successfully, false otherwise
+     */
+    boolean updateAccount(CustomerDto customerDto);
 }
