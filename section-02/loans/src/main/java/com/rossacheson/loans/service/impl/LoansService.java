@@ -48,6 +48,21 @@ public class LoansService implements ILoansService {
     }
 
     /**
+     * Updates the loan details.
+     *
+     * @param loanDto the data transfer object containing loan details
+     * @return true if loan was updated successfully, false otherwise
+     */
+    @Override
+    public boolean updateLoan(LoanDto loanDto) {
+        Loan loan = loansRepository.findByLoanNumber(loanDto.getLoanNumber()).orElseThrow(
+                () -> new ResourceNotFoundException("Loan", "LoanNumber", loanDto.getLoanNumber()));
+        LoansMapper.mapToLoan(loanDto, loan);
+        loansRepository.save(loan);
+        return  true;
+    }
+
+    /**
      * @param mobileNumber - Mobile Number of the Customer
      * @return the new loan details
      */

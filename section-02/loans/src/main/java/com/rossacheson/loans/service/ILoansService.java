@@ -16,15 +16,15 @@ public interface ILoansService {
      * @return the loan details
      */
     LoanDto fetchLoan(String mobileNumber);
-//
-//    /**
-//     * Updates the account details for the given customer.
-//     *
-//     * @param customerDto the data transfer object containing customer details such as name, email, and mobile number
-//     * @return true if account was updated successfully, false otherwise
-//     */
-//    boolean updateLoan(LoanDto customerDto);
-//
+
+    /**
+     * Updates the loan details.
+     *
+     * @param loanDto the data transfer object containing loan details
+     * @return true if loan was updated successfully, false otherwise
+     */
+    boolean updateLoan(LoanDto loanDto);
+
 //    /**
 //     * Deletes the account associated with the given mobile number.
 //     *
