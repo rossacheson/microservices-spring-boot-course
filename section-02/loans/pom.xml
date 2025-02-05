@@ -12,7 +12,7 @@
 	<artifactId>loans</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>loans</name>
-	<description>Microservice for Accounts</description>
+	<description>Microservice for Loans</description>
 	<url/>
 	<licenses>
 		<license/>

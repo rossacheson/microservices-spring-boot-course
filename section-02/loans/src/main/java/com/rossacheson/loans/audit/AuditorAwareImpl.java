@@ -9,6 +9,6 @@ import java.util.Optional;
 public class AuditorAwareImpl implements AuditorAware<String> {
     @Override
     public Optional<String> getCurrentAuditor() {
-        return Optional.of("ACCOUNTS_MICROSERVICE");
+        return Optional.of("LOANS_MICROSERVICE");
     }
 }
