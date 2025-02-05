@@ -63,6 +63,21 @@ public class LoansService implements ILoansService {
     }
 
     /**
+     * Deletes the loan associated with the given mobile number.
+     *
+     * @param mobileNumber the mobile phone number associated with the loan
+     * @return true if loan was deleted successfully, false otherwise
+     */
+    @Override
+    public boolean deleteLoan(String mobileNumber) {
+        Loan loan = loansRepository.findByMobileNumber(mobileNumber).orElseThrow(
+                () -> new ResourceNotFoundException("Loan", "mobileNumber", mobileNumber)
+        );
+        loansRepository.deleteById(loan.getLoanId());
+        return true;
+    }
+
+    /**
      * @param mobileNumber - Mobile Number of the Customer
      * @return the new loan details
      */

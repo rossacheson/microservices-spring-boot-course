@@ -25,11 +25,11 @@ public interface ILoansService {
      */
     boolean updateLoan(LoanDto loanDto);
 
-//    /**
-//     * Deletes the account associated with the given mobile number.
-//     *
-//     * @param mobileNumber the mobile phone number associated with the account
-//     * @return true if account was deleted successfully, false otherwise
-//     */
-//    boolean deleteLoan(String mobileNumber);
+    /**
+     * Deletes the loan associated with the given mobile number.
+     *
+     * @param mobileNumber the mobile phone number associated with the loan
+     * @return true if loan was deleted successfully, false otherwise
+     */
+    boolean deleteLoan(String mobileNumber);
 }
