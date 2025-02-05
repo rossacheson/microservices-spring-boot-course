@@ -1,8 +1,11 @@
 package com.rossacheson.loans.service.impl;
 
 import com.rossacheson.loans.constants.LoansConstants;
+import com.rossacheson.loans.dto.LoanDto;
 import com.rossacheson.loans.entity.Loan;
 import com.rossacheson.loans.exception.LoanAlreadyExistsException;
+import com.rossacheson.loans.exception.ResourceNotFoundException;
+import com.rossacheson.loans.mapper.LoansMapper;
 import com.rossacheson.loans.repository.LoansRepository;
 import com.rossacheson.loans.service.ILoansService;
 import lombok.AllArgsConstructor;
@@ -28,6 +31,20 @@ public class LoansService implements ILoansService {
             throw new LoanAlreadyExistsException("Loan already registered with given mobileNumber " + mobileNumber);
         }
         loansRepository.save(createNewLoan(mobileNumber));
+    }
+
+    /**
+     * Retrieves the loan details for the given mobile number.
+     *
+     * @param mobileNumber the mobile phone number associated with the loan
+     * @return the loan details
+     */
+    @Override
+    public LoanDto fetchLoan(String mobileNumber) {
+        Loan loan = loansRepository.findByMobileNumber(mobileNumber).orElseThrow(
+                () -> new ResourceNotFoundException("Loan", "mobileNumber", mobileNumber)
+        );
+        return LoansMapper.mapToLoanDto(loan, new LoanDto());
     }
 
     /**

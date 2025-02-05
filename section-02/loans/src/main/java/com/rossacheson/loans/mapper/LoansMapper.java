@@ -3,7 +3,7 @@ package com.rossacheson.loans.mapper;
 import com.rossacheson.loans.dto.LoanDto;
 import com.rossacheson.loans.entity.Loan;
 
-public class LoanMapper {
+public class LoansMapper {
 
     public static LoanDto mapToLoanDto(Loan loan, LoanDto loanDto) {
         loanDto.setLoanNumber(loan.getLoanNumber());

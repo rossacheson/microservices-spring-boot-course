@@ -9,13 +9,13 @@ public interface ILoansService {
      * @param mobileNumber the mobile number to be associated with the loan
      */
     void createLoan(String mobileNumber);
-//    /**
-//     * Retrieves the account details for the given mobile number.
-//     *
-//     * @param mobileNumber the mobile phone number associated with the account
-//     * @return the account details
-//     */
-//    LoanDto fetchLoan(String mobileNumber);
+    /**
+     * Retrieves the loan details for the given mobile number.
+     *
+     * @param mobileNumber the mobile phone number associated with the loan
+     * @return the loan details
+     */
+    LoanDto fetchLoan(String mobileNumber);
 //
 //    /**
 //     * Updates the account details for the given customer.
