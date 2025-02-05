@@ -35,7 +35,6 @@ public class AccountsController {
             summary = "Create Account REST API",
             description = "REST API to create a new Customer and Account inside EazyBank"
     )
-
     @ApiResponses({
             @ApiResponse(
                     responseCode = "201",
