@@ -22,6 +22,11 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class LoansController {
     private ILoansService iLoansService;
+
+    @Operation(
+            summary = "Create loan REST API",
+            description = "REST API to create a loan based on a mobile number"
+    )
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createLoan(@RequestParam
                                                   @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
