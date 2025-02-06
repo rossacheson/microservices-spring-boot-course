@@ -59,8 +59,8 @@ public class LoansController {
     public ResponseEntity<LoanDto> fetchLoanDetails(@RequestParam
                                                      @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
                                                      String mobileNumber) {
-        LoanDto loansDto = iLoansService.fetchLoan(mobileNumber);
-        return ResponseEntity.status(HttpStatus.OK).body(loansDto);
+        LoanDto loanDto = iLoansService.fetchLoan(mobileNumber);
+        return ResponseEntity.status(HttpStatus.OK).body(loanDto);
     }
 
     @Operation(
