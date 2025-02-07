@@ -1,6 +1,7 @@
 package com.rossacheson.accounts.controller;
 
 import com.rossacheson.accounts.constants.AccountsConstants;
+import com.rossacheson.accounts.dto.AccountsContactInfoDto;
 import com.rossacheson.accounts.dto.CustomerDto;
 import com.rossacheson.accounts.dto.ErrorResponseDto;
 import com.rossacheson.accounts.dto.ResponseDto;
@@ -35,6 +36,8 @@ public class AccountsController {
     private String buildVersion;
     @Autowired
     private Environment environment;
+    @Autowired
+    private AccountsContactInfoDto accountsContactInfoDto;
 
     public AccountsController(IAccountsService iAccountsService) {
         this.iAccountsService = iAccountsService;
@@ -212,5 +215,28 @@ public class AccountsController {
     @GetMapping("/java-version")
     public ResponseEntity<String> getJavaVersion() {
         return ResponseEntity.ok(environment.getProperty("java.version"));
+    }
+
+    @Operation(
+            summary = "Get Contact Information",
+            description = "Get contact information that can be used to reach out to the support team"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "HTTP Status Internal Server Error",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDto.class)
+                    )
+            )
+    }
+    )
+    @GetMapping("/contact-info")
+    public ResponseEntity<AccountsContactInfoDto> getContactInfo() {
+        return ResponseEntity.ok(accountsContactInfoDto);
     }
 }
