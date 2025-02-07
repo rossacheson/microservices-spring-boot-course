@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: "2.0"
+
+accounts-contact:
+  message: "Welcome to EazyBank accounts related qa APIs "
+  contactDetails:
+    name: "Ray Smith - QA Lead"
+    email: "ray@eazybank.com"
+  onCallSupport:
+    - (444) 444-1234
+    - (444) 523-1345
