@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+cards-contact:
+  message: "Welcome to EazyBank cards related QA APIs "
+  contactDetails:
+    name: "Eileen Quarry - QA Lead"
+    email: "eileen@eazybank.com"
+  onCallSupport:
+    - (252) 444-1234
+    - (252) 523-1345
