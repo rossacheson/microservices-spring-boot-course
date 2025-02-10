@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+build:
+  version: "1.0"
+
+loans-contact:
+  message: "Welcome to EazyBank loans related prod APIs "
+  contactDetails:
+    name: "Jumping Shoe - Product Owner"
+    email: "jumping@eazybank.com"
+  onCallSupport:
+    - (222) 222-1234
+    - (222) 523-1345

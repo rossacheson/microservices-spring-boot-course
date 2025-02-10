@@ -3,6 +3,7 @@ package com.rossacheson.loans.controller;
 import com.rossacheson.loans.constants.LoansConstants;
 import com.rossacheson.loans.dto.ErrorResponseDto;
 import com.rossacheson.loans.dto.LoanDto;
+import com.rossacheson.loans.dto.LoansContactInfoDto;
 import com.rossacheson.loans.dto.ResponseDto;
 import com.rossacheson.loans.service.ILoansService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,16 +13,27 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@AllArgsConstructor
 public class LoansController {
     private ILoansService iLoansService;
+    @Value("${build.version}")
+    private String buildVersion;
+    @Autowired
+    private Environment environment;
+    @Autowired
+    private LoansContactInfoDto loansContactInfoDto;
+
+    public LoansController(ILoansService iLoansService) {
+        this.iLoansService = iLoansService;
+    }
 
     @Operation(
             summary = "Create loan REST API",
@@ -135,5 +147,32 @@ public class LoansController {
                     .status(HttpStatus.EXPECTATION_FAILED)
                     .body(new ResponseDto(LoansConstants.STATUS_417, LoansConstants.MESSAGE_417_DELETE));
         }
+    }
+
+    @Operation(
+            summary = "Get Build Information REST API",
+            description = "Get build information i.e. version number"
+    )
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildVersion() {
+        return ResponseEntity.ok(buildVersion);
+    }
+
+    @Operation(
+            summary = "Get Java Version REST API",
+            description = "Get Java version of the server"
+    )
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion() {
+        return ResponseEntity.ok(environment.getProperty("java.version"));
+    }
+
+    @Operation(
+            summary = "Get Contact Information",
+            description = "Get contact information that can be used to reach out to the support team"
+    )
+    @GetMapping("/contact-info")
+    public ResponseEntity<LoansContactInfoDto> getContactInfo() {
+        return ResponseEntity.ok(loansContactInfoDto);
     }
 }
