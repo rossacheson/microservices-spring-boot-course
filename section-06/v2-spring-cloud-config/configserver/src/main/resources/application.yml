@@ -16,6 +16,9 @@ spring:
           #search-locations: "classpath:/config/"
           #search-locations: "file:///Users//rossacheson//Documents//spring-cloud-config"
 
+encrypt:
+  key: "OverrideThisKeyWithYourOwnSecretKeyPlease"
+
 server:
   port: 8071
 
