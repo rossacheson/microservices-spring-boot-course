@@ -2,13 +2,19 @@ spring:
   application:
     name: "configserver"
   profiles:
-    active: native
+    active: git
   cloud:
     config:
       server:
-        native:
+        git:
+          uri: https://github.com/rossacheson/microservices-spring-boot-course-config
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+        #native:
           #search-locations: "classpath:/config/"
-          search-locations: "file:///Users//rossacheson//Documents//spring-cloud-config"
+          #search-locations: "file:///Users//rossacheson//Documents//spring-cloud-config"
 
 server:
   port: 8071
