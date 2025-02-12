@@ -16,8 +16,8 @@ services:
       service: network-deploy-service
 
   configserver:
-    image: peregrination/configserver:section-06
-    container_name: configserver-microservice-s06
+    image: peregrination/configserver:section-08
+    container_name: configserver-microservice-s08
     ports:
       - "8071:8071"
     depends_on:
@@ -34,8 +34,8 @@ services:
       service: microservice-base-config
 
   accounts:
-    image: peregrination/accounts:section-06
-    container_name: accounts-microservice-s06
+    image: peregrination/accounts:section-08
+    container_name: accounts-microservice-s08
     ports:
         - "8080:8080"
     depends_on:
@@ -48,8 +48,8 @@ services:
       service: microservice-configserver-config
 
   loans:
-    image: peregrination/loans:section-06
-    container_name: loans-microservice-s06
+    image: peregrination/loans:section-08
+    container_name: loans-microservice-s08
     ports:
       - "8090:8090"
     depends_on:
@@ -62,8 +62,8 @@ services:
       service: microservice-configserver-config
 
   cards:
-    image: peregrination/cards:section-06
-    container_name: cards-microservice-s06
+    image: peregrination/cards:section-08
+    container_name: cards-microservice-s08
     ports:
       - "9000:9000"
     depends_on:

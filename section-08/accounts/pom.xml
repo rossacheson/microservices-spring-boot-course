@@ -112,7 +112,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>peregrination/${project.artifactId}:section-06</name>
+						<name>peregrination/${project.artifactId}:section-08</name>
 					</image>
 					<excludes>
 						<exclude>
