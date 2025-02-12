@@ -15,11 +15,6 @@ spring:
         #native:
           #search-locations: "classpath:/config/"
           #search-locations: "file:///Users//rossacheson//Documents//spring-cloud-config"
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
 
 encrypt:
   key: "OverrideThisKeyWithYourOwnSecretKeyPlease"
