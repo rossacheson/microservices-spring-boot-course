@@ -41,7 +41,7 @@ public class CardsController {
             description = "REST API to create a card based on a mobile number"
     )
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createLoan(@RequestParam
+    public ResponseEntity<ResponseDto> createCard(@RequestParam
                                                   @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
                                                   String mobileNumber) {
         iCardsService.createCard(mobileNumber);
@@ -69,7 +69,7 @@ public class CardsController {
     }
     )
     @GetMapping("/fetch")
-    public ResponseEntity<CardDto> fetchLoanDetails(@RequestParam
+    public ResponseEntity<CardDto> fetchCardDetails(@RequestParam
                                                     @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
                                                     String mobileNumber) {
         CardDto cardDto = iCardsService.fetchCard(mobileNumber);
@@ -135,7 +135,7 @@ public class CardsController {
     }
     )
     @DeleteMapping("/delete")
-    public ResponseEntity<ResponseDto> deleteLoanDetails(@RequestParam
+    public ResponseEntity<ResponseDto> deleteCardDetails(@RequestParam
                                                          @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
                                                          String mobileNumber) {
         boolean isDeleted = iCardsService.deleteCard(mobileNumber);

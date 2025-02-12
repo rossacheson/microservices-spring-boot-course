@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Repository
-public interface AccountRepository extends JpaRepository<Account, Long> {
+public interface AccountsRepository extends JpaRepository<Account, Long> {
     Optional<Account> findByCustomerId(Long customerId);
 
     @Transactional
