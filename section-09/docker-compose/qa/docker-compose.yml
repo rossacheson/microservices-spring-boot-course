@@ -1,7 +1,7 @@
 services:
   configserver:
     image: peregrination/configserver:section-09
-    container_name: configserver-microservice-s08
+    container_name: configserver-ms
     ports:
       - "8071:8071"
     healthcheck:
@@ -36,7 +36,7 @@ services:
 
   accounts:
     image: peregrination/accounts:section-09
-    container_name: accounts-microservice-s08
+    container_name: accounts-ms
     ports:
         - "8080:8080"
     depends_on:
@@ -52,7 +52,7 @@ services:
 
   loans:
     image: peregrination/loans:section-09
-    container_name: loans-microservice-s08
+    container_name: loans-ms
     ports:
       - "8090:8090"
     depends_on:
@@ -68,7 +68,7 @@ services:
 
   cards:
     image: peregrination/cards:section-09
-    container_name: cards-microservice-s08
+    container_name: cards-ms
     ports:
       - "9000:9000"
     depends_on:
