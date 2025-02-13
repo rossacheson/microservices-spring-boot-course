@@ -31,5 +31,5 @@ info:
 logging:
   level:
     com:
-      eazybytes:
+      rossacheson:
         gatewayserver: DEBUG

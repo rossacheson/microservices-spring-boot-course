@@ -13,6 +13,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -23,13 +25,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 public class CardsController {
-    private ICardsService iCardsService;
+    private final ICardsService iCardsService;
     @Value("${build.version}")
     private String buildVersion;
     @Autowired
     private Environment environment;
     @Autowired
     private CardsContactInfoDto cardsContactInfoDto;
+    private final static Logger logger = LoggerFactory.getLogger(CardsController.class);
 
     public CardsController(ICardsService iCardsService) {
         this.iCardsService = iCardsService;
@@ -69,9 +72,13 @@ public class CardsController {
     }
     )
     @GetMapping("/fetch")
-    public ResponseEntity<CardDto> fetchCardDetails(@RequestParam
-                                                    @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
-                                                    String mobileNumber) {
+    public ResponseEntity<CardDto> fetchCardDetails(
+            @RequestHeader("eazybank-correlation-id")
+            String correlationId,
+            @RequestParam
+            @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
+            String mobileNumber) {
+        logger.debug("eazyBank-correlation-id found in CardsController : {}", correlationId);
         CardDto cardDto = iCardsService.fetchCard(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK).body(cardDto);
     }

@@ -46,3 +46,9 @@ info:
     name: "loans"
     description: "Eazy Bank Loans Application"
     version: "1.0.0"
+
+logging:
+  level:
+    com:
+      rossacheson:
+        loans: DEBUG
