@@ -122,6 +122,7 @@
 				<configuration>
 					<image>
 						<name>peregrination/${project.artifactId}:section-09</name>
+						<builder>paketobuildpacks/builder-jammy-full</builder>
 					</image>
 					<excludes>
 						<exclude>
