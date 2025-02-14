@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+cards-contact:
+  message: "Welcome to EazyBank cards related local APIs "
+  contactDetails:
+    name: "Larry Doe - Developer"
+    email: "larry@eazybank.com"
+  onCallSupport:
+    - (543) 555-1234
+    - (543) 523-1345
